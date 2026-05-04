@@ -1,16 +1,33 @@
 package org.firstinspires.ftc.teamcode.common.subsystems;
 
-import dev.nextftc.core.commands.Command;
 import dev.nextftc.core.subsystems.Subsystem;
-import dev.nextftc.hardware.powerable.SetPower;
 import org.firstinspires.ftc.teamcode.common.Parts;
 
 public class Intake implements Subsystem {
     public static final Intake INSTANCE = new Intake();
     private Intake() {}
 
+    public enum IntakeMode{
+        OFF,
+        ON,
+        REVERSE
+    }
+    public static IntakeMode mode = IntakeMode.OFF;
 
-    public Command forward = new SetPower(Parts.intake, 1).requires(this);
-    public Command reverse = new SetPower(Parts.intake, -1).requires(this);
-    public Command stop = new SetPower(Parts.intake, 0).requires(this);
+    @Override
+    public void periodic() {
+        switch (mode){
+            case OFF:
+                Parts.intake.setPower(0);
+                break;
+            case ON:
+                Parts.intake.setPower(1);
+                break;
+            case REVERSE:
+                Parts.intake.setPower(-1);
+                break;
+            default:
+                mode = IntakeMode.OFF; // just in case
+        }
+    }
 }

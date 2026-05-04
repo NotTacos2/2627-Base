@@ -43,12 +43,12 @@ public class TeleOP extends NextFTCOpMode {
                 .whenBecomesFalse(() -> driverControlled.setScalar(1));
 
         Gamepads.gamepad1().leftTrigger().greaterThan(0.2)
-                .whenBecomesTrue(Intake.INSTANCE.forward)
-                .whenBecomesFalse(Intake.INSTANCE.stop);
+                .whenBecomesTrue(() -> Intake.mode = Intake.IntakeMode.ON)
+                .whenBecomesFalse(() -> Intake.mode = Intake.IntakeMode.OFF);
 
         Gamepads.gamepad1().rightTrigger().greaterThan(0.2)
-                .whenBecomesTrue(Intake.INSTANCE.reverse)
-                .whenBecomesFalse(Intake.INSTANCE.stop);
+                .whenBecomesTrue(() -> Intake.mode = Intake.IntakeMode.REVERSE)
+                .whenBecomesFalse(() -> Intake.mode = Intake.IntakeMode.OFF);
 
 
     }
