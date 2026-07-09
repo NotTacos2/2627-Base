@@ -13,6 +13,7 @@ import dev.nextftc.hardware.driving.MecanumDriverControlled;
 
 import org.firstinspires.ftc.teamcode.common.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.common.Parts;
+import org.firstinspires.ftc.teamcode.common.Constants.*;
 
 @TeleOp(group = "Decode")
 public class TeleOP extends NextFTCOpMode {
@@ -39,7 +40,7 @@ public class TeleOP extends NextFTCOpMode {
         driverControlled.schedule();
 
         Gamepads.gamepad1().leftBumper()
-                .whenBecomesTrue(() -> driverControlled.setScalar(0.5))
+                .whenBecomesTrue(() -> driverControlled.setScalar(DriveConstants.slowdrivepower))
                 .whenBecomesFalse(() -> driverControlled.setScalar(1));
 
         Gamepads.gamepad1().leftTrigger().greaterThan(0.2)

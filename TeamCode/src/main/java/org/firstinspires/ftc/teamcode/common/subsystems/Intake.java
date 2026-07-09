@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.common.subsystems;
 
 import dev.nextftc.core.subsystems.Subsystem;
 import org.firstinspires.ftc.teamcode.common.Parts;
+import org.firstinspires.ftc.teamcode.common.Constants.*;
 
 public class Intake implements Subsystem {
     public static final Intake INSTANCE = new Intake();
@@ -21,10 +22,10 @@ public class Intake implements Subsystem {
                 Parts.intake.setPower(0);
                 break;
             case ON:
-                Parts.intake.setPower(1);
+                Parts.intake.setPower(IntakeConstants.intakepower);
                 break;
             case REVERSE:
-                Parts.intake.setPower(-1);
+                Parts.intake.setPower(IntakeConstants.reverseintakepower);
                 break;
             default:
                 mode = IntakeMode.OFF; // just in case
