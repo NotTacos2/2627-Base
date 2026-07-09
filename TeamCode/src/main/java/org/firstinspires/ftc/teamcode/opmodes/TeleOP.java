@@ -14,7 +14,7 @@ import dev.nextftc.hardware.driving.MecanumDriverControlled;
 import org.firstinspires.ftc.teamcode.common.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.common.Parts;
 
-@TeleOp
+@TeleOp(group = "Decode")
 public class TeleOP extends NextFTCOpMode {
     Parts part = new Parts();
     public TeleOP() {
